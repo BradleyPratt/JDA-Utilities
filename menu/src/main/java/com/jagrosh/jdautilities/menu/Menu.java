@@ -20,13 +20,13 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
+import com.bradeurs.jdautilities.commons.waiter.EventWaiter;
 import net.dv8tion.jda.api.entities.*;
 
 import javax.annotation.Nullable;
 
 /**
- * A frame for wrapping an {@link com.jagrosh.jdautilities.commons.waiter.EventWaiter EventWaiter}
+ * A frame for wrapping an {@link EventWaiter EventWaiter}
  * into a "action, reaction" menu that waits on forms of user input such as reactions,
  * or key-phrases.
  *
@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * by the implementation of a companion builder may be helpful (see the documentation on
  * {@link Menu.Builder Menu.Builder} for more info).
  *
- * @see    com.jagrosh.jdautilities.commons.waiter.EventWaiter
+ * @see    EventWaiter
  * @see    Menu.Builder
  *
  * @author John Grosh
@@ -201,7 +201,7 @@ public abstract class Menu
         public abstract V build();
 
         /**
-         * Sets the {@link com.jagrosh.jdautilities.commons.waiter.EventWaiter EventWaiter}
+         * Sets the {@link EventWaiter EventWaiter}
          * that will do {@link com.jagrosh.jdautilities.menu.Menu Menu} operations.
          *
          * <p><b>NOTE:</b> All Menus will only work with an EventWaiter set!

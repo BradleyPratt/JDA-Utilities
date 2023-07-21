@@ -1,4 +1,4 @@
-package com.jagrosh.jdautilities.commons.utils;
+package com.bradeurs.jdautilities.commons.utils;
 
 import net.dv8tion.jda.internal.utils.Checks;
 

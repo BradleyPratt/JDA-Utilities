@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jagrosh.jdautilities.command;
+package com.bradeurs.jdautilities.command;
 
+import com.bradeurs.jdautilities.command.annotation.JDACommand;
+import com.bradeurs.jdautilities.command.impl.CommandClientImpl;
 import net.dv8tion.jda.api.entities.Guild;
 
 import java.time.OffsetDateTime;
@@ -25,10 +27,10 @@ import java.util.function.Function;
 /**
  * A Bot Client interface implemented on objects used to hold bot data.
  * 
- * <p>This is implemented in {@link com.jagrosh.jdautilities.command.impl.CommandClientImpl CommandClientImpl}
+ * <p>This is implemented in {@link CommandClientImpl CommandClientImpl}
  * alongside implementation of {@link net.dv8tion.jda.api.hooks.EventListener EventListener} to create a
  * compounded "Client Listener" which catches specific kinds of events thrown by JDA and processes them
- * automatically to handle and execute {@link com.jagrosh.jdautilities.command.Command Command}s.
+ * automatically to handle and execute {@link Command Command}s.
  *
  * <p>Implementations also serve as a useful platforms, carrying reference info such as the bot's
  * {@linkplain #getOwnerId() Owner ID}, {@linkplain #getPrefix() prefix}, and a {@linkplain #getServerInvite()
@@ -36,8 +38,8 @@ import java.util.function.Function;
  *
  * <p>For the CommandClientImpl, once initialized, only the following can be modified:
  * <ul>
- *     <li>{@link com.jagrosh.jdautilities.command.Command Command}s may be added or removed.</li>
- *     <li>The {@link com.jagrosh.jdautilities.command.CommandListener CommandListener} may be set.</li>
+ *     <li>{@link Command Command}s may be added or removed.</li>
+ *     <li>The {@link CommandListener CommandListener} may be set.</li>
  * </ul>
  *
  * @author John Grosh (jagrosh)
@@ -59,12 +61,12 @@ import java.util.function.Function;
  *                      if you provide {@code null} for the Owner ID, that'll just flat out throw an {@link
  *                      java.lang.IllegalArgumentException IllegalArgumentException}).
  *
- *         <p><b>4)</b> Do not provide strings when using {@link com.jagrosh.jdautilities.command.CommandClientBuilder#setEmojis(String, String, String)
+ *         <p><b>4)</b> Do not provide strings when using {@link CommandClientBuilder#setEmojis(String, String, String)
  *                      CommandClientBuilder#setEmojis(String, String, String)} that are not unicode emojis or that do
  *                      not match the custom emote format specified in {@link net.dv8tion.jda.api.entities.Emote#getAsMention()
  *                      Emote#getAsMention()} (IE: {@code <:EmoteName:EmoteID>}).
  *
- *         <p><b>5)</b> Avoid using {@link com.jagrosh.jdautilities.command.impl.CommandClientImpl#linkIds(long,
+ *         <p><b>5)</b> Avoid using {@link CommandClientImpl#linkIds(long,
  *                      net.dv8tion.jda.api.entities.Message)}. This will create errors and has no real purpose outside
  *                      of it's current usage.
  */
@@ -87,7 +89,7 @@ public interface CommandClient
     /**
      * Returns the visual representation of the bot's prefix. 
      * 
-     * <p>This is the same as {@link com.jagrosh.jdautilities.command.CommandClient#getPrefix() } unless the prefix is the default,
+     * <p>This is the same as {@link CommandClient#getPrefix() } unless the prefix is the default,
      * in which case it appears as {@literal @Botname}.
      * 
      * @return A never-null prefix
@@ -95,7 +97,7 @@ public interface CommandClient
     String getTextualPrefix();
 
     /**
-     * Adds a single {@link com.jagrosh.jdautilities.command.Command Command} to this CommandClient's
+     * Adds a single {@link Command Command} to this CommandClient's
      * registered Commands.
      *
      * <p>For CommandClient's containing 20 commands or less, command calls by users will have the bot iterate
@@ -105,8 +107,8 @@ public interface CommandClient
      * <p>To prevent delay a CommandClient that has more that 20 Commands registered to it will begin to use
      * <b>indexed calls</b>.
      * <br>Indexed calls use a {@link java.util.HashMap HashMap} which links their
-     * {@link com.jagrosh.jdautilities.command.Command#name name} and their
-     * {@link com.jagrosh.jdautilities.command.Command#aliases aliases} to the index that which they
+     * {@link Command#name name} and their
+     * {@link Command#aliases aliases} to the index that which they
      * are located at in the ArrayList they are stored.
      *
      * <p>This means that all insertion and removal of Commands must reorganize the index maintained by the HashMap.
@@ -122,7 +124,7 @@ public interface CommandClient
     void addCommand(Command command);
 
     /**
-     * Adds a single {@link com.jagrosh.jdautilities.command.Command Command} to this CommandClient's
+     * Adds a single {@link Command Command} to this CommandClient's
      * registered Commands at the specified index.
      *
      * <p>For CommandClient's containing 20 commands or less, command calls by users will have the bot iterate
@@ -132,8 +134,8 @@ public interface CommandClient
      * <p>To prevent delay a CommandClient that has more that 20 Commands registered to it will begin to use
      * <b>indexed calls</b>.
      * <br>Indexed calls use a {@link java.util.HashMap HashMap} which links their
-     * {@link com.jagrosh.jdautilities.command.Command#name name} and their
-     * {@link com.jagrosh.jdautilities.command.Command#aliases aliases} to the index that which they
+     * {@link Command#name name} and their
+     * {@link Command#aliases aliases} to the index that which they
      * are located at in the ArrayList they are stored.
      *
      * <p>This means that all insertion and removal of Commands must reorganize the index maintained by the HashMap.
@@ -154,7 +156,7 @@ public interface CommandClient
     void addCommand(Command command, int index);
 
     /**
-     * Removes a single {@link com.jagrosh.jdautilities.command.Command Command} from this CommandClient's
+     * Removes a single {@link Command Command} from this CommandClient's
      * registered Commands at the index linked to the provided name/alias.
      *
      * <p>For CommandClient's containing 20 commands or less, command calls by users will have the bot iterate
@@ -164,8 +166,8 @@ public interface CommandClient
      * <p>To prevent delay a CommandClient that has more that 20 Commands registered to it will begin to use
      * <b>indexed calls</b>.
      * <br>Indexed calls use a {@link java.util.HashMap HashMap} which links their
-     * {@link com.jagrosh.jdautilities.command.Command#name name} and their
-     * {@link com.jagrosh.jdautilities.command.Command#aliases aliases} to the index that which they
+     * {@link Command#name name} and their
+     * {@link Command#aliases aliases} to the index that which they
      * are located at in the ArrayList they are stored.
      *
      * <p>This means that all insertion and removal of Commands must reorganize the index maintained by the HashMap.
@@ -182,8 +184,8 @@ public interface CommandClient
 
     /**
      * Compiles the provided {@link java.lang.Object Object} annotated with {@link
-     * com.jagrosh.jdautilities.command.annotation.JDACommand.Module JDACommand.Module} into a {@link java.util.List
-     * List} of {@link com.jagrosh.jdautilities.command.Command Command}s and adds them to this CommandClient in
+     * JDACommand.Module JDACommand.Module} into a {@link java.util.List
+     * List} of {@link Command Command}s and adds them to this CommandClient in
      * the order they are listed.
      *
      * <p>This is done through the {@link AnnotatedModuleCompiler
@@ -199,8 +201,8 @@ public interface CommandClient
 
     /**
      * Compiles the provided {@link java.lang.Object Object} annotated with {@link
-     * com.jagrosh.jdautilities.command.annotation.JDACommand.Module JDACommand.Module} into a {@link java.util.List
-     * List} of {@link com.jagrosh.jdautilities.command.Command Command}s and adds them to this CommandClient via
+     * JDACommand.Module JDACommand.Module} into a {@link java.util.List
+     * List} of {@link Command Command}s and adds them to this CommandClient via
      * the {@link java.util.function.Function Function} provided.
      *
      * <p>This is done through the {@link AnnotatedModuleCompiler
@@ -224,8 +226,8 @@ public interface CommandClient
     void addAnnotatedModule(Object module, Function<Command, Integer> mapFunction);
 
     /**
-     * Sets the {@link com.jagrosh.jdautilities.command.CommandListener CommandListener} to catch
-     * command-related events thrown by this {@link com.jagrosh.jdautilities.command.CommandClient CommandClient}.
+     * Sets the {@link CommandListener CommandListener} to catch
+     * command-related events thrown by this {@link CommandClient CommandClient}.
      * 
      * @param  listener
      *         The CommandListener
@@ -233,14 +235,14 @@ public interface CommandClient
     void setListener(CommandListener listener);
     
     /**
-     * Returns the current {@link com.jagrosh.jdautilities.command.CommandListener CommandListener}.
+     * Returns the current {@link CommandListener CommandListener}.
      * 
      * @return A possibly-null CommandListener
      */
     CommandListener getListener();
     
     /**
-     * Returns the list of registered {@link com.jagrosh.jdautilities.command.Command Command}s
+     * Returns the list of registered {@link Command Command}s
      * during this session.
      * 
      * @return A never-null List of Commands registered during this session
@@ -248,7 +250,7 @@ public interface CommandClient
     List<Command> getCommands();
 
     /**
-     * Gets the time this {@link com.jagrosh.jdautilities.command.CommandClient CommandClient}
+     * Gets the time this {@link CommandClient CommandClient}
      * implementation was created.
      * 
      * @return The start time of this CommandClient implementation
@@ -291,7 +293,7 @@ public interface CommandClient
     void cleanCooldowns();
     
     /**
-     * Gets the number of uses for the provide {@link com.jagrosh.jdautilities.command.Command Command}
+     * Gets the number of uses for the provide {@link Command Command}
      * during this session, or {@code 0} if the command is not registered to this CommandClient.
      * 
      * @param  command 
@@ -302,13 +304,13 @@ public interface CommandClient
     int getCommandUses(Command command);
     
     /**
-     * Gets the number of uses for a {@link com.jagrosh.jdautilities.command.Command Command}
+     * Gets the number of uses for a {@link Command Command}
      * during this session matching the provided String name, or {@code 0} if there is no Command 
      * with the name.
      *
      * <p><b>NOTE:</b> this method <b>WILL NOT</b> get uses for a command if an
-     * {@link com.jagrosh.jdautilities.command.Command#aliases alias} is provided! Also note that
-     * {@link com.jagrosh.jdautilities.command.Command#children child commands} <b>ARE NOT</b>
+     * {@link Command#aliases alias} is provided! Also note that
+     * {@link Command#children child commands} <b>ARE NOT</b>
      * tracked and providing names or effective names of child commands will return {@code 0}.
      * 
      * @param  name
@@ -370,7 +372,7 @@ public interface CommandClient
     /**
      * Gets the {@link java.util.concurrent.ScheduledExecutorService ScheduledExecutorService} held by this client.
      *
-     * <p>This is used for methods such as {@link com.jagrosh.jdautilities.command.CommandEvent#async(Runnable)
+     * <p>This is used for methods such as {@link CommandEvent#async(Runnable)
      * CommandEvent#async(Runnable)} run code asynchronously.
      * 
      * @return The ScheduledExecutorService held by this client.
@@ -427,7 +429,7 @@ public interface CommandClient
      *
      * @return {@code true} if the bot uses linked deletion, {@code false} otherwise.
      *
-     * @see    com.jagrosh.jdautilities.command.CommandClientBuilder#setLinkedCacheSize(int)
+     * @see    CommandClientBuilder#setLinkedCacheSize(int)
      *         CommandClientBuilder#setLinkedCacheSize(int)
      */
     boolean usesLinkedDeletion();
@@ -437,8 +439,8 @@ public interface CommandClient
      * {@link net.dv8tion.jda.api.entities.Guild Guild}.
      *
      * <p>The returning object for this is specified via provision of a
-     * {@link com.jagrosh.jdautilities.command.GuildSettingsManager GuildSettingsManager} to
-     * {@link com.jagrosh.jdautilities.command.CommandClientBuilder#setGuildSettingsManager(com.jagrosh.jdautilities.command.GuildSettingsManager)
+     * {@link GuildSettingsManager GuildSettingsManager} to
+     * {@link CommandClientBuilder#setGuildSettingsManager(GuildSettingsManager)
      * CommandClientBuilder#setGuildSettingsManager(GuildSettingsManager)}, more specifically
      * {@link GuildSettingsManager#getSettings(net.dv8tion.jda.api.entities.Guild)
      * GuildSettingsManager#getSettings(Guild)}.
@@ -449,14 +451,14 @@ public interface CommandClient
      *         The Guild to get Settings for
      *
      * @return The settings object for the Guild, specified in
-     *         {@link com.jagrosh.jdautilities.command.GuildSettingsManager#getSettings(Guild)
+     *         {@link GuildSettingsManager#getSettings(Guild)
      *         GuildSettingsManager#getSettings(Guild)}, can be {@code null} if the implementation
      *         allows it.
      */
     <S> S getSettingsFor(Guild guild);
 
     /**
-     * Returns the type of {@link com.jagrosh.jdautilities.command.GuildSettingsManager GuildSettingsManager},
+     * Returns the type of {@link GuildSettingsManager GuildSettingsManager},
      * the same type of one provided when building this CommandClient, or {@code null} if one was not provided there.
      *
      * <p>This is good if you want to use non-abstract methods specific to your implementation.

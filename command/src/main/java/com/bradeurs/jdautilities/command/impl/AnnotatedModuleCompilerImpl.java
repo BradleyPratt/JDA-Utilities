@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jagrosh.jdautilities.command.impl;
+package com.bradeurs.jdautilities.command.impl;
 
-import com.jagrosh.jdautilities.command.AnnotatedModuleCompiler;
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandBuilder;
-import com.jagrosh.jdautilities.command.CommandEvent;
-import com.jagrosh.jdautilities.command.annotation.JDACommand;
+import com.bradeurs.jdautilities.command.annotation.JDACommand;
+import com.bradeurs.jdautilities.command.AnnotatedModuleCompiler;
+import com.bradeurs.jdautilities.command.Command;
+import com.bradeurs.jdautilities.command.CommandBuilder;
+import com.bradeurs.jdautilities.command.CommandEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
- * Default implementation for {@link com.jagrosh.jdautilities.command.AnnotatedModuleCompiler
+ * Default implementation for {@link AnnotatedModuleCompiler
  * AnnotatedModuleCompiler}.
  *
  * @since  1.8

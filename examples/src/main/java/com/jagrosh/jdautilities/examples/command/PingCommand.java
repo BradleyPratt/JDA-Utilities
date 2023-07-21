@@ -16,8 +16,8 @@
 package com.jagrosh.jdautilities.examples.command;
 
 import java.time.temporal.ChronoUnit;
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandEvent;
+import com.bradeurs.jdautilities.command.Command;
+import com.bradeurs.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.doc.standard.CommandInfo;
 import com.jagrosh.jdautilities.examples.doc.Author;
 

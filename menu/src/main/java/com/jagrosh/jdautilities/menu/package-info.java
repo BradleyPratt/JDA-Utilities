@@ -40,6 +40,6 @@
  * implementations for usage.
  *
  * <p>Please note that this entire package makes <b>HEAVY</b> usage of the
- * {@link com.jagrosh.jdautilities.commons.waiter.EventWaiter EventWaiter}.
+ * {@link com.bradeurs.jdautilities.commons.waiter.EventWaiter EventWaiter}.
  */
 package com.jagrosh.jdautilities.menu;

@@ -15,9 +15,9 @@
  */
 package com.jagrosh.jdautilities.examples.command;
 
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandEvent;
-import com.jagrosh.jdautilities.commons.utils.FinderUtil;
+import com.bradeurs.jdautilities.command.Command;
+import com.bradeurs.jdautilities.command.CommandEvent;
+import com.bradeurs.jdautilities.commons.utils.FinderUtil;
 import java.awt.Color;
 import java.time.format.DateTimeFormatter;
 import java.util.List;

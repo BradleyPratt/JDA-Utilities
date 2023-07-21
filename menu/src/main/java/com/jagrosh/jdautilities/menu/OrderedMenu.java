@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
+import com.bradeurs.jdautilities.commons.waiter.EventWaiter;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -361,7 +361,7 @@ public class OrderedMenu extends Menu
          * @throws java.lang.IllegalArgumentException
          *         If one of the following is violated:
          *         <ul>
-         *             <li>No {@link com.jagrosh.jdautilities.commons.waiter.EventWaiter EventWaiter} was set.</li>
+         *             <li>No {@link EventWaiter EventWaiter} was set.</li>
          *             <li>No choices were set.</li>
          *             <li>More than ten choices were set.</li>
          *             <li>No action {@link java.util.function.Consumer Consumer} was set.</li>

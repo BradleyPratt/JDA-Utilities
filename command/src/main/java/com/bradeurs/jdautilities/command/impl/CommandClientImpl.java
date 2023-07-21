@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jagrosh.jdautilities.command.impl;
+package com.bradeurs.jdautilities.command.impl;
 
-import com.jagrosh.jdautilities.command.*;
-import com.jagrosh.jdautilities.command.Command.Category;
-import com.jagrosh.jdautilities.commons.utils.FixedSizeCache;
-import com.jagrosh.jdautilities.commons.utils.SafeIdUtil;
+import com.bradeurs.jdautilities.command.*;
+import com.bradeurs.jdautilities.command.Command.Category;
+import com.bradeurs.jdautilities.commons.utils.FixedSizeCache;
+import com.bradeurs.jdautilities.commons.utils.SafeIdUtil;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.Permission;
@@ -50,13 +50,13 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * An implementation of {@link com.jagrosh.jdautilities.command.CommandClient CommandClient} to be used by a bot.
+ * An implementation of {@link CommandClient CommandClient} to be used by a bot.
  * 
  * <p>This is a listener usable with {@link net.dv8tion.jda.api.JDA JDA}, as it implements
  * {@link net.dv8tion.jda.api.hooks.EventListener EventListener} in order to catch and use different kinds of
  * {@link net.dv8tion.jda.api.events.Event Event}s. The primary usage of this is where the CommandClient implementation
  * takes {@link net.dv8tion.jda.api.events.message.MessageReceivedEvent MessageReceivedEvent}s, and automatically
- * processes arguments, and provide them to a {@link com.jagrosh.jdautilities.command.Command Command} for
+ * processes arguments, and provide them to a {@link Command Command} for
  * running and execution.
  * 
  * @author John Grosh (jagrosh)
@@ -157,13 +157,13 @@ public class CommandClientImpl implements CommandClient, EventListener
                                .append(" - ").append(command.getHelp());
                     }
                 }
-                User owner = event.getJDA().getUserById(ownerId);
+                /*User owner = event.getJDA().getUserById(ownerId);
                 if(owner!=null)
                 {
                     builder.append("\n\nFor additional help, contact **").append(owner.getName()).append("**#").append(owner.getDiscriminator());
                     if(serverInvite!=null)
                         builder.append(" or join ").append(serverInvite);
-                }
+                }*/
                 event.replyInDm(builder.toString(), unused ->
                 {
                     if(event.isFromType(ChannelType.TEXT))

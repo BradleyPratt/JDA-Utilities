@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jagrosh.jdautilities.commons.waiter;
+package com.bradeurs.jdautilities.commons.waiter;
 
 import net.dv8tion.jda.api.events.Event;
 import net.dv8tion.jda.api.events.GenericEvent;
@@ -73,7 +73,7 @@ public class EventWaiter implements EventListener
      * Constructs an EventWaiter using the provided {@link java.util.concurrent.ScheduledExecutorService Executor}
      * as it's threadpool.
      *
-     * <p>A developer might choose to use this constructor over the {@link com.jagrosh.jdautilities.commons.waiter.EventWaiter#EventWaiter() default},
+     * <p>A developer might choose to use this constructor over the {@link EventWaiter#EventWaiter() default},
      * for using a alternate form of threadpool, as opposed to a {@link java.util.concurrent.Executors#newSingleThreadExecutor() single thread executor}.
      * <br>A developer might also favor this over the default as they use the same waiter for multiple
      * shards, and thus shutdown must be handled externally if a special shutdown sequence is being used.
@@ -88,7 +88,7 @@ public class EventWaiter implements EventListener
      *     made to shutdown the provided Executor.</li>
      * </ul>
      * It's worth noting that this EventWaiter can serve as a delegate to invoke the threadpool's shutdown via
-     * a call to {@link com.jagrosh.jdautilities.commons.waiter.EventWaiter#shutdown() EventWaiter#shutdown()}.
+     * a call to {@link EventWaiter#shutdown() EventWaiter#shutdown()}.
      * However, this operation is only supported for EventWaiters that are not supposed to shutdown automatically,
      * otherwise invocation of {@code EventWaiter#shutdown()} will result in an
      * {@link java.lang.UnsupportedOperationException UnsupportedOperationException}.
@@ -103,7 +103,7 @@ public class EventWaiter implements EventListener
      *         If the threadpool provided is {@code null} or
      *         {@link java.util.concurrent.ScheduledExecutorService#isShutdown() is shutdown}
      *
-     * @see    com.jagrosh.jdautilities.commons.waiter.EventWaiter#shutdown() EventWaiter#shutdown()
+     * @see    EventWaiter#shutdown() EventWaiter#shutdown()
      */
     public EventWaiter(ScheduledExecutorService threadpool, boolean shutdownAutomatically)
     {

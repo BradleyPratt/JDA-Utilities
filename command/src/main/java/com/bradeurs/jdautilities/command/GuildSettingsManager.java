@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jagrosh.jdautilities.command;
+package com.bradeurs.jdautilities.command;
 
 import net.dv8tion.jda.api.entities.Guild;
 

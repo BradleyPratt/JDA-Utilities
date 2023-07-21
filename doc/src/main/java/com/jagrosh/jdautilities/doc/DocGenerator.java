@@ -15,7 +15,7 @@
  */
 package com.jagrosh.jdautilities.doc;
 
-import com.jagrosh.jdautilities.commons.utils.FixedSizeCache;
+import com.bradeurs.jdautilities.commons.utils.FixedSizeCache;
 import com.jagrosh.jdautilities.doc.standard.CommandInfo;
 import com.jagrosh.jdautilities.doc.standard.Error;
 import com.jagrosh.jdautilities.doc.standard.RequiredPermissions;

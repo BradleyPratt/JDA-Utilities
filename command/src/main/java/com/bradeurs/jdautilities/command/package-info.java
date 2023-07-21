@@ -15,43 +15,43 @@
  */
 
 /**
- * Items in this package pertain to the {@link com.jagrosh.jdautilities.command.CommandClient CommandClient} and
- * {@link com.jagrosh.jdautilities.command.Command Commands}.
+ * Items in this package pertain to the {@link com.bradeurs.jdautilities.command.CommandClient CommandClient} and
+ * {@link com.bradeurs.jdautilities.command.Command Commands}.
  * 
- * <p>All of the contents are used heavily in the {@link com.jagrosh.jdautilities.command.impl.CommandClientImpl CommandClientImpl},
+ * <p>All of the contents are used heavily in the {@link com.bradeurs.jdautilities.command.impl.CommandClientImpl CommandClientImpl},
  * and are summarized as follows:
  * <ul>
- *     <li>{@link com.jagrosh.jdautilities.command.AnnotatedModuleCompiler AnnotatedModuleCompiler}
+ *     <li>{@link com.bradeurs.jdautilities.command.AnnotatedModuleCompiler AnnotatedModuleCompiler}
  *     <br>An interface to create Commands from annotated objects (More info on annotated commands can be found in the
- *     {@link com.jagrosh.jdautilities.command.annotation.JDACommand JDACommand} documentation).</li>
+ *     {@link com.bradeurs.jdautilities.command.annotation.JDACommand JDACommand} documentation).</li>
  *
- *     <li>{@link com.jagrosh.jdautilities.command.CommandBuilder CommandBuilder}
+ *     <li>{@link com.bradeurs.jdautilities.command.CommandBuilder CommandBuilder}
  *     <br>An chain builder for Commands.</li>
  *
- *     <li>{@link com.jagrosh.jdautilities.command.Command Command}
+ *     <li>{@link com.bradeurs.jdautilities.command.Command Command}
  *     <br>An abstract class that can be inherited by classes to create Commands compatible with the
  *     {@code CommandClientImpl}.</li>
  *
- *     <li>{@link com.jagrosh.jdautilities.command.CommandClient CommandClient}
+ *     <li>{@link com.bradeurs.jdautilities.command.CommandClient CommandClient}
  *     <br>An interface used for getting info set when building a {@code CommandClientImpl}.</li>
  *
- *     <li>{@link com.jagrosh.jdautilities.command.CommandClientBuilder CommandClientBuilder}
+ *     <li>{@link com.bradeurs.jdautilities.command.CommandClientBuilder CommandClientBuilder}
  *     <br>A builder system used to create a {@code CommandClientImpl} across several optional chained methods.</li>
  *
- *     <li>{@link com.jagrosh.jdautilities.command.CommandEvent CommandEvent}
+ *     <li>{@link com.bradeurs.jdautilities.command.CommandEvent CommandEvent}
  *     <br>A wrapper for a {@link net.dv8tion.jda.api.events.message.MessageReceivedEvent MessageReceivedEvent},
  *     {@code CommandClient}, and String arguments. The main basis for carrying information to be used in Commands.</li>
  *
- *     <li>{@link com.jagrosh.jdautilities.command.CommandListener CommandListener}
+ *     <li>{@link com.bradeurs.jdautilities.command.CommandListener CommandListener}
  *     <br>An interface to be provided to a {@code CommandClientImpl} that can provide Command operations depending
  *     on the outcome of the call.</li>
  *
- *     <li>{@link com.jagrosh.jdautilities.command.GuildSettingsManager GuildSettingsManager}
+ *     <li>{@link com.bradeurs.jdautilities.command.GuildSettingsManager GuildSettingsManager}
  *     <br>An abstract object used to store and handle {@code GuildSettingsProvider} implementations.</li>
  *
- *     <li>{@link com.jagrosh.jdautilities.command.GuildSettingsProvider GuildSettingsProvider}
+ *     <li>{@link com.bradeurs.jdautilities.command.GuildSettingsProvider GuildSettingsProvider}
  *     <br>An implementable interface used to supply default methods for handling guild specific settings
  *     via a {@code GuildSettingsManager}.</li>
  * </ul>
  */
-package com.jagrosh.jdautilities.command;
+package com.bradeurs.jdautilities.command;

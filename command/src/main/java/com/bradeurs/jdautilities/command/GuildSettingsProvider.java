@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jagrosh.jdautilities.command;
+package com.bradeurs.jdautilities.command;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
@@ -25,7 +25,7 @@ import java.util.Collection;
  *
  * <p>This interface allows the specification of any of the following functions:
  * <ul>
- *     <li>Guild Specific Prefixes (via {@link com.jagrosh.jdautilities.command.GuildSettingsProvider#getPrefixes()})</li>
+ *     <li>Guild Specific Prefixes (via {@link GuildSettingsProvider#getPrefixes()})</li>
  * </ul>
  *
  * Note that all of these functions are <b>OPTIONAL</b> to implement, and instructions

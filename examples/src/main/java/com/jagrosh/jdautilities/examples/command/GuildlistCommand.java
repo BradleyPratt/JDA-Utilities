@@ -17,14 +17,14 @@ package com.jagrosh.jdautilities.examples.command;
 
 import java.awt.Color;
 import java.util.concurrent.TimeUnit;
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandEvent;
+import com.bradeurs.jdautilities.command.Command;
+import com.bradeurs.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.doc.standard.CommandInfo;
 import com.jagrosh.jdautilities.doc.standard.Error;
 import com.jagrosh.jdautilities.doc.standard.RequiredPermissions;
 import com.jagrosh.jdautilities.examples.doc.Author;
 import com.jagrosh.jdautilities.menu.Paginator;
-import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
+import com.bradeurs.jdautilities.commons.waiter.EventWaiter;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.ChannelType;
 import net.dv8tion.jda.api.exceptions.PermissionException;

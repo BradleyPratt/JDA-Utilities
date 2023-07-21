@@ -15,8 +15,8 @@
  */
 package com.jagrosh.jdautilities.examples.command;
 
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandEvent;
+import com.bradeurs.jdautilities.command.Command;
+import com.bradeurs.jdautilities.command.CommandEvent;
 import java.time.format.DateTimeFormatter;
 import net.dv8tion.jda.api.*;
 import net.dv8tion.jda.api.entities.Guild;
